@@ -1,18 +1,13 @@
 const gameBoard = function () {
   let number = 1;
-  let grid = [];
+  let grid = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ];
 
-  for (let i = 0; i < 3; i++) {
-    let rows = [];
-    for (let j = 0; j < 3; j++) {
-      rows.push(number);
-      number++;
-    }
-    grid.push(rows);
-  }
   console.log(grid);
 };
-
 gameBoard();
 
 const createPlayers = ({ name, symbol }) => ({
@@ -31,7 +26,7 @@ const player2 = createPlayers({
 });
 
 // take the user input from grid
-const getUserInput = function (grid) {
+const getUserInput = function () {
   let numberOfRounds = 9;
   let player1Turn = false;
 
@@ -43,6 +38,7 @@ const getUserInput = function (grid) {
         window.prompt("Choose number between 1-9 to place your symbol:")
       );
       console.log(`Player 1 move: ${userInput}`);
+      //   everytime player chooses, the board will update based on its symbol
     } else {
       let userInput = Number(
         window.prompt("Choose number between 1-9 to place your symbol:")
