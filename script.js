@@ -28,33 +28,13 @@ const gameController = function () {
     [3, 5, 7],
   ];
 
-  const determineWinner = function (player) {
-    for (let i = 0; i < winningCombination.length; i++) {
-      let matchCount = 0;
-      for (let j = 0; j < winningCombination[i].length; j++) {
-        if (player.playerMoves.includes(winningCombination[i][j])) {
-          matchCount++;
-        }
-      }
-      if (matchCount === 3) {
-        console.log(`${player.name} won!`);
-        return true;
-      }
-    }
-    return false;
-  };
-
   const getUserInput = function () {
     let numberOfRounds = 9;
     let player1Turn = true;
 
     for (let i = 0; i < numberOfRounds; i++) {
       const currentPlayer = player1Turn ? player1 : player2;
-      let userInput = Number(
-        window.prompt(
-          `${currentPlayer.name}: Choose number between 1-9 to place your symbol.`
-        )
-      );
+      let userInput = "X";
 
       if (makeMove(currentPlayer, userInput)) {
         currentPlayer.playerMoves.push(userInput);
@@ -85,8 +65,32 @@ const gameController = function () {
     }
     return false;
   };
+
+  const determineWinner = function (player) {
+    for (let i = 0; i < winningCombination.length; i++) {
+      let matchCount = 0;
+      for (let j = 0; j < winningCombination[i].length; j++) {
+        if (player.playerMoves.includes(winningCombination[i][j])) {
+          matchCount++;
+        }
+      }
+      if (matchCount === 3) {
+        console.log(`${player.name} won!`);
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  const btns = document.querySelectorAll(".btn");
+
+  let play = btns.forEach((btn) => {
+    btn.addEventListener("click", getUserInput());
+  });
+
   return { getUserInput };
 };
 
 const game = gameController();
-game.getUserInput();
+// game.getUserInput();
