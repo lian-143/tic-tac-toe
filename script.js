@@ -29,7 +29,6 @@ const gameController = function () {
   ];
 
   const determineWinner = function (player) {
-    // horizontal
     for (let i = 0; i < winningCombination.length; i++) {
       let matchCount = 0;
       for (let j = 0; j < winningCombination[i].length; j++) {
@@ -39,10 +38,10 @@ const gameController = function () {
       }
       if (matchCount === 3) {
         console.log(`${player.name} won!`);
-        return `${player.name} won`;
+        return true;
       }
     }
-    return "no winner";
+    return false;
   };
 
   const getUserInput = function () {
@@ -58,14 +57,19 @@ const gameController = function () {
       );
 
       if (makeMove(currentPlayer, userInput)) {
-        determineWinner(currentPlayer);
+        currentPlayer.playerMoves.push(userInput);
+        console.log(`${currentPlayer.name}: ${currentPlayer.playerMoves}`);
+        if (determineWinner(currentPlayer)) {
+          console.log("Game over");
+          return;
+        }
         player1Turn = !player1Turn;
-        console.log(`${currentPlayer.name} move: ${userInput}`);
       } else {
+        console.log("Invalid move, try again.");
         i--;
       }
     }
-    console.log("Game over");
+    console.log("Game over! It's a draw.");
   };
 
   const makeMove = function (player, userInput) {
@@ -74,60 +78,15 @@ const gameController = function () {
       for (let j = 0; j < grid[i].length; j++) {
         if (grid[i][j] === userInput) {
           grid[i][j] = player.symbol;
-          player.playerMoves.push(userInput);
-          // console.log(grid);
+          console.log(`${player.name} moves ${player.symbol}`);
           return true;
         }
       }
     }
-    console.log("Invalid move");
     return false;
   };
-
-  return { getUserInput, grid, determineWinner, winningCombination };
+  return { getUserInput };
 };
 
 const game = gameController();
-// console.log(game.determineWinner(grid, winningCombination));
-console.log(game.grid);
-// game.getUserInput();
-
-/*
-let grid = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-];1
-
-const winningCombination = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-  [1, 4, 7],
-  [2, 5, 8],
-  [3, 6, 9],
-  [1, 5, 9],
-  [3, 5, 7],
-];
-
-let player1Moves = [1, 5, 9]; // Example moves for Player 1
-let player2Moves = [2, 4, 6]; // Example moves for Player 2
-
-const determineWinner = function (playerMoves) {
-  // horizontal
-  for (let i = 0; i < winningCombination.length; i++) {
-    let matchCount = 0;
-    for (let j = 0; j < winningCombination[i].length; j++) {
-      if (playerMoves.includes(winningCombination[i][j])) {
-        matchCount++;
-      }
-    }
-    if (matchCount === 3) {
-      console.log("it worked");
-      return "winner";
-    }
-  }
-  return "no winner";
-};
-
-console.log(determineWinner(player2Moves)); */
+game.getUserInput();
