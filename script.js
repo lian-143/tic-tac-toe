@@ -34,7 +34,11 @@ const gameController = function () {
 
     for (let i = 0; i < numberOfRounds; i++) {
       const currentPlayer = player1Turn ? player1 : player2;
-      let userInput = "X";
+      let userInput = Number(
+        window.prompt(
+          `${currentPlayer.name}: Choose number between 1-9 to place your symbol.`
+        )
+      );
 
       if (makeMove(currentPlayer, userInput)) {
         currentPlayer.playerMoves.push(userInput);
@@ -79,15 +83,8 @@ const gameController = function () {
         return true;
       }
     }
-
     return false;
   };
-
-  const btns = document.querySelectorAll(".btn");
-
-  let play = btns.forEach((btn) => {
-    btn.addEventListener("click", getUserInput());
-  });
 
   return { getUserInput };
 };
