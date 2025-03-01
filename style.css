@@ -105,3 +105,15 @@ h1 {
 .btn:hover {
   background-color: #f5d7c8;
 }
+
+.reset {
+  background-color: #a31d1d;
+  color: #f8f2de;
+  border: none;
+  padding: 1em;
+  border-radius: 2px;
+}
+
+.reset:hover {
+  background-color: #d84040;
+}

@@ -96,84 +96,22 @@ const determineWinner = (function () {
     [2, 4, 6],
   ];
 
-<<<<<<< HEAD
-  const getUserInput = function () {
-    let numberOfRounds = 9;
-    let player1Turn = true;
-
-    for (let i = 0; i < numberOfRounds; i++) {
-      const currentPlayer = player1Turn ? player1 : player2;
-      let userInput = Number(
-        window.prompt(
-          `${currentPlayer.name}: Choose number between 1-9 to place your symbol.`
-        )
-      );
-
-      if (makeMove(currentPlayer, userInput)) {
-        currentPlayer.playerMoves.push(userInput);
-        console.log(`${currentPlayer.name}: ${currentPlayer.playerMoves}`);
-        if (determineWinner(currentPlayer)) {
-          console.log("Game over");
-          return;
-        }
-        player1Turn = !player1Turn;
-      } else {
-        console.log("Invalid move, try again.");
-        i--;
-      }
-    }
-    console.log("Game over! It's a draw.");
-  };
-
-  const makeMove = function (player, userInput) {
-    // everytime player choose a number, the board updates and replaces number with symbol
-    for (let i = 0; i < grid.length; i++) {
-      for (let j = 0; j < grid[i].length; j++) {
-        if (grid[i][j] === userInput) {
-          grid[i][j] = player.symbol;
-          console.log(`${player.name} moves ${player.symbol}`);
-          return true;
-        }
-      }
-    }
-    return false;
-  };
-
-  const determineWinner = function (player) {
-    for (let i = 0; i < winningCombination.length; i++) {
-      let matchCount = 0;
-      for (let j = 0; j < winningCombination[i].length; j++) {
-        if (player.playerMoves.includes(winningCombination[i][j])) {
-=======
   const checkWin = function (currentPlayer) {
     for (let i = 0; i < winningCombination.length; i++) {
       let matchCount = 0;
       for (let j = 0; j < winningCombination[i].length; j++) {
         if (currentPlayer.playerMoves.includes(winningCombination[i][j])) {
->>>>>>> xoxo-logic
           matchCount++;
         }
       }
       if (matchCount === 3) {
-<<<<<<< HEAD
-        console.log(`${player.name} won!`);
-=======
         console.log(`${currentPlayer.playerName} won!`);
         displayWinner.innerHTML = `<h1> ${currentPlayer.playerName} wins! </h1>`;
->>>>>>> xoxo-logic
         return true;
       }
     }
     return false;
   };
 
-<<<<<<< HEAD
-  return { getUserInput };
-};
-
-const game = gameController();
-// game.getUserInput();
-=======
   return { checkWin, displayWinner };
 })();
->>>>>>> xoxo-logic
