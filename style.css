@@ -112,6 +112,7 @@ h1 {
   border: none;
   padding: 1em;
   border-radius: 2px;
+  margin-bottom: 1.5em;
 }
 
 .reset:hover {
