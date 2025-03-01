@@ -1,0 +1,119 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  font-family: "Press Start 2P", serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffcdb2;
+  text-align: center;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* xoxo board */
+h1 {
+  margin: 1em 0;
+  color: #d2665a;
+}
+
+.player-names {
+  display: flex;
+  text-align: center;
+}
+
+.player-names > h3 {
+  margin: 0 3em;
+}
+
+.xoxo-board {
+  width: 35em;
+  height: 35em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+.boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.btn {
+  min-height: 10em;
+  border: 0.4em solid #a94a4a;
+  background-color: #ffcdb2;
+}
+
+.btn:hover {
+  background-color: #f5d7c8;
+}
+
+.reset {
+  background-color: #a31d1d;
+  color: #f8f2de;
+  border: none;
+  padding: 1em;
+  border-radius: 2px;
+}
+
+.reset:hover {
+  background-color: #d84040;
+}
