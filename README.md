@@ -1,4 +1,4 @@
-# tic-tac-toe
+# Tic-Tac-Toe
 
 ## 📌 Live Demo
 https://lian-143.github.io/tic-tac-toe/
